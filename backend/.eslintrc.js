@@ -15,7 +15,6 @@ module.exports = {
   },
   ignorePatterns: ['.eslintrc.js'],
   rules: {
-    'no-console': 1,
     'prettier/prettier': 0
   },
 };
