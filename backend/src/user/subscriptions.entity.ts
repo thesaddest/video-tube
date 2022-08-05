@@ -11,5 +11,5 @@ export class SubscriptionsEntity extends Base {
 
 	@OneToMany(() => UserEntity, user => user.subscriptions)
 	@JoinColumn({ name: 'to_channel_id' })
-	toChannel: VideoEntity[]
+	toChannel: VideoEntity
 }
