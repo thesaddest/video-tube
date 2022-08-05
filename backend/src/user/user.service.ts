@@ -22,6 +22,13 @@ export class UserService {
 	async byId(id: number) {
 		const user = await this.userRepository.findOne({
 			where: { id },
+			relations: {
+				videos: true,
+				subscriptions: true,
+			},
+			order: {
+				createdAt: 'DESC',
+			},
 		})
 
 		if (!user) throw new NotFoundException('User was not found!')
