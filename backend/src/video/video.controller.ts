@@ -21,15 +21,15 @@ import { CurrentUser } from "../user/user.decorator";
 export class VideoController {
   constructor(private readonly videoService: VideoService) {}
 
-  @Get("get-private/:id")
-  @Auth()
-  async getPrivateVideo(@Param("id") id: string) {
-    return this.videoService.byId(+id, true);
-  }
-
   @Get()
   async getAll(@Query("searchTerm") searchTerm?: string) {
     return this.videoService.getAll(searchTerm);
+  }
+
+  @Get("get-private/:id")
+  @Auth()
+  async getPrivateVideo(@Param("id") id: string) {
+    return this.videoService.byId(+id);
   }
 
   @Get("most-popular")
@@ -38,7 +38,7 @@ export class VideoController {
   }
 
   @Get(":id")
-  async getUsers(@Param("id") id: string) {
+  async getVideo(@Param("id") id: string) {
     return this.videoService.byId(+id);
   }
 

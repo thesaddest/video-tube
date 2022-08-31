@@ -39,7 +39,6 @@ export class VideoService {
         },
       },
     });
-
     if (!video) throw new NotFoundException("Video was not found!");
     return video;
   }
@@ -60,7 +59,6 @@ export class VideoService {
 
     return this.videoRepository.find({
       where: { ...options, isPublic: true },
-      order: { createdAt: "DESC" },
       relations: {
         user: true,
         comments: { user: true },
