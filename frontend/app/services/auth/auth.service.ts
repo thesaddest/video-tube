@@ -1,0 +1,25 @@
+import { axiosSimplified } from "../../api/axios";
+import { IAuthData } from "@/services/auth/auth.helper";
+
+const AUTH = "auth";
+
+export const AuthService = {
+	async login(email: string, password: string) {
+		const response = await axiosSimplified.post<IAuthData>(`/${AUTH}/login`, {
+			email,
+			password
+		});
+		return response.data;
+	},
+
+	async register(email: string, password: string) {
+		const response = await axiosSimplified.post<IAuthData>(
+			`/${AUTH}/register`,
+			{
+				email,
+				password
+			}
+		);
+		return response.data;
+	}
+};
