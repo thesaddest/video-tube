@@ -3,16 +3,16 @@ import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 type TypeOut = {
 	ref: any;
 	isShown: boolean;
-	setIsShow: Dispatch<SetStateAction<boolean>>;
+	setIsShown: Dispatch<SetStateAction<boolean>>;
 };
 
 export const useOutside = (initialVisible: boolean): TypeOut => {
-	const [isShown, setIsShow] = useState(initialVisible);
+	const [isShown, setIsShown] = useState(initialVisible);
 	const ref = useRef<HTMLElement>(null);
 
 	const handleClickOutside = (event: any) => {
 		if (ref.current && !ref.current.contains(event.target)) {
-			setIsShow(false);
+			setIsShown(false);
 		}
 	};
 
@@ -22,5 +22,5 @@ export const useOutside = (initialVisible: boolean): TypeOut => {
 			document.removeEventListener("click", handleClickOutside, false);
 		};
 	});
-	return { ref, isShown, setIsShow };
+	return { ref, isShown, setIsShown };
 };
