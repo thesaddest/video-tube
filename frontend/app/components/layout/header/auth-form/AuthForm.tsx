@@ -9,13 +9,14 @@ import { FaUserCircle } from "react-icons/fa";
 import Field from "@/components/ui/field/Field";
 import { validEmail } from "@/components/layout/header/auth-form/auth.valid";
 import Button from "@/components/ui/button/Button";
+import { useActions } from "@/hooks/useActions";
 
 const AuthForm: FC = () => {
 	const { ref, setIsShown, isShown } = useOutside(false);
 	const [type, setType] = useState<"login" | "register">("login");
 
-	//useActions
-	// const {isLoading} = useAuth();
+	const { login, register: registerAction } = useActions();
+	const { isLoading } = useAuth();
 
 	const {
 		register,
@@ -25,7 +26,8 @@ const AuthForm: FC = () => {
 		mode: "onChange"
 	});
 	const onSubmit: SubmitHandler<IAuthFields> = data => {
-		// if (type === "login") elseIf(type === "register");
+		if (type === "login") login(data);
+		else if (type === "register") registerAction(data);
 	};
 	return (
 		<div className={styles.wrapper} ref={ref}>
@@ -62,9 +64,12 @@ const AuthForm: FC = () => {
 						type="password"
 					/>
 					<div className={"mt-5 mb-1 text-center"}>
-						<Button onClick={() => setType("login")}>Login</Button>
+						<Button onClick={() => setType("login")} disabled={isLoading}>
+							Login
+						</Button>
 					</div>
 					<button
+						disabled={isLoading}
 						className={styles.register}
 						onClick={() => setType("register")}
 					>
