@@ -9,6 +9,6 @@ export const VideoService = {
 	},
 
 	async getMostPopular() {
-		return axiosSimplified.get<IVideo>(`/${VIDEO}/most-popular`);
+		return axiosSimplified.get<IVideo[]>(`/${VIDEO}/most-popular`);
 	}
 };
