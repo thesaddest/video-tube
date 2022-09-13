@@ -5,7 +5,7 @@ export interface IUser extends IBase {
 	email: string;
 	name: string;
 	isVerified?: boolean;
-	subscribersCount?: number;
+	subscribersCount: number | 0;
 	description: string;
 	avatarPath: string;
 	videos?: IVideo[];
