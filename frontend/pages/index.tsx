@@ -6,6 +6,7 @@ import { VideoService } from "@/services/video.service";
 import shuffle from "lodash/shuffle";
 
 const HomePage: NextPage<IHome> = props => {
+	console.log(props);
 	return <Home {...props} />;
 };
 

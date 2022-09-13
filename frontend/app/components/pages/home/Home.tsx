@@ -5,7 +5,6 @@ import Catalog from "@/components/pages/home/catalog/Catalog";
 import { IHome } from "@/components/pages/home/home.interface";
 
 const Home: FC<IHome> = ({ randomVideo, newVideos, topVideo }) => {
-	console.log(randomVideo, newVideos, topVideo);
 	return (
 		<Layout title="Video Tube | Video Hosting">
 			<Discover topVideo={topVideo} randomVideo={randomVideo} />
