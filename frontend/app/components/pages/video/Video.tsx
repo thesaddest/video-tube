@@ -6,6 +6,7 @@ import cn from "classnames";
 import { useRouter } from "next/router";
 import { IVideo } from "@/types/video.interface";
 import { videoApi } from "@/store/api/video.api";
+import Comments from "@/components/pages/video/comments/Comments";
 
 const Video: FC = () => {
 	const { query } = useRouter();
@@ -20,7 +21,7 @@ const Video: FC = () => {
 		<Layout title={video.name}>
 			<div className={styles.layout}>
 				<VideoPlayer videoPath={video.videoPath} />
-				<div></div>
+				<Comments videoId={video.id} comments={video.comments || []} />
 			</div>
 			<div className={cn(styles.layout, "mt-7")}></div>
 		</Layout>
