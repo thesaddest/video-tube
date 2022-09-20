@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 import { IVideo } from "@/types/video.interface";
 import { videoApi } from "@/store/api/video.api";
 import Comments from "@/components/pages/video/comments/Comments";
+import VideoDetail from "@/components/pages/video/video-detail/VideoDetail";
+import { IUser } from "@/types/user.interface";
 
 const Video: FC = () => {
 	const { query } = useRouter();
@@ -23,7 +25,10 @@ const Video: FC = () => {
 				<VideoPlayer videoPath={video.videoPath} />
 				<Comments videoId={video.id} comments={video.comments || []} />
 			</div>
-			<div className={cn(styles.layout, "mt-7")}></div>
+			<div className={cn(styles.layout, "mt-7")}>
+				<VideoDetail video={video} channel={video.user || ({} as IUser)} />
+				<div></div>
+			</div>
 		</Layout>
 	);
 };
